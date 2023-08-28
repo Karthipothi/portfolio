@@ -9,17 +9,58 @@ document.getElementById("currentYear").textContent = new Date().getFullYear();
 
 
 // Project section secript
-// Loop through each video thumbnail and set up the click event
-document.querySelectorAll('.video-container .video video').forEach(vid => {
-vid.onclick = () => {
-    document.querySelector('.popup-video').style.display = 'block';
-    document.querySelector('.popup-video video').src = vid.getAttribute('src');
-}
+// // Loop through each video thumbnail and set up the click event
+// document.querySelectorAll('.video-container .video video').forEach(vid => {
+// vid.onclick = () => {
+//     document.querySelector('.popup-video').style.display = 'block';
+//     document.querySelector('.popup-video video').src = vid.getAttribute('src');
+// }
+// });
+
+// // Add click event to the close button in the pop-up video
+// document.querySelector('.popup-video span').onclick = () => {
+// document.querySelector('.popup-video').style.display = 'none';
+// };
+
+document.querySelectorAll('.video-container .video video').forEach((vid, index) => {
+  vid.onclick = () => {
+    const popupVideo = document.querySelector('.popup-video');
+    popupVideo.style.display = 'flex';
+    popupVideo.style.flexDirection = 'column';
+
+    const popupVideoElement = document.querySelector('#popup-video-element');
+    popupVideoElement.src = vid.getAttribute('src');
+
+    const popupTitle = document.querySelector('#popup-title');
+    const videoTitles = ['HYUNDAI', 'Title 2', 'Title3', 'Title4', 'Title5', 'Title6']; // Add titles for each video
+    popupTitle.textContent = videoTitles[index];
+
+    const popupContent = document.querySelector('#popup-content');
+    const videoContents = [
+      'Description for Video 1 goes here.',
+      'Description for Video 2 goes here.',
+      'Description for Video 3 goes here.',
+      'Description for Video 4 goes here.',
+      'Description for Video 5 goes here.',
+      'Description for Video 6 goes here.'
+    ]; // Add descriptions for each video
+    popupContent.textContent = videoContents[index];
+  }
 });
 
-// Add click event to the close button in the pop-up video
 document.querySelector('.popup-video span').onclick = () => {
-document.querySelector('.popup-video').style.display = 'none';
+  const popupVideo = document.querySelector('.popup-video');
+  popupVideo.style.display = 'none';
+
+  const popupVideoElement = document.querySelector('#popup-video-element');
+  popupVideoElement.pause();
+  popupVideoElement.src = '';
+
+  const popupTitle = document.querySelector('#popup-title');
+  popupTitle.textContent = 'Video Title';
+
+  const popupContent = document.querySelector('#popup-content');
+  popupContent.textContent = 'Video content description goes here.';
 };
 
 // Contact form script
