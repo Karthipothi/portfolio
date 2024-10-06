@@ -26,8 +26,76 @@
     {
         justify-content: end;
     }
+    .nav-link {
+        position: relative;
+        padding-bottom: 5px; 
+        transition: color 0.3s ease;
+      }
+      
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+      
+      .nav-link.active::after {
+        width: 100%; 
+      }
+      
+      .nav-link:hover::after {
+        width: 100%; 
+      }
 
 /* navbar end */
+
+/* project section*/
+.card {
+    position: relative; 
+    overflow: hidden; 
+    padding: 2px;
+    border-radius: 10px; /* Optional: rounded corners */
+    background: linear-gradient(75deg, #106eea, #00d0ff, #cf00ad, #c8ff00); 
+  }
+  
+  .card-body {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white; 
+    padding: 15px;
+    opacity: 0; 
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    transform: translateY(100%); 
+    
+  }
+  
+  .card:hover .card-body {
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+  
+  .card-img-top {
+    transition: transform 0.3s ease; 
+  }
+  
+  .card:hover .card-img-top {
+    transform: scale(1.1); 
+  }
+  /*project card end*/
+  /*skill; start*/
+  .skill-img {
+    width: 30%;
+    height: auto; 
+    margin: 10px 0; 
+  }
+  /*skill end*/
 /* Hero section start */
     .hero-bg
         {
